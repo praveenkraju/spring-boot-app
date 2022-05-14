@@ -1,0 +1,27 @@
+server:
+   port: 8081
+   
+spring:
+   datasource:
+      url: jdbc:h2:mem:user_db
+      username: sa
+      password: password
+      driverClassName: org.h2.Driver
+   jpa:
+      hibernate:
+         ddl-auto: create-drop
+      properties:
+         hibernate.dialect: org.hibernate.dialect.H2Dialect
+         hibernate.format_sql: true
+         hibernate.id.new_generator_mappings: false
+      defer-datasource-initialization: true
+   h2:
+      console:
+         enabled: true
+         path: /h2-console
+         settings.trace: false
+security:
+   jwt:
+      token:
+         secret-key: Ss+dMq6Vwo9Zf7cJ+TTMokd/hgb8wzV53EFr/uyzSR3a7CubHaL8rPD4giIyaLth079u7zKzw/08QESckAzZ6HV1b8nLykuRDy6cpumtBJ6N25Q7o653Dc7xW45OaI+s74Ek+FjuVYFGOcLtqu0BLBCwjbQeosNcycIXKBKonVA=
+         expiration: 300000
