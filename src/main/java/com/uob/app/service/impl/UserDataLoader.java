@@ -26,7 +26,7 @@ public class UserDataLoader implements ApplicationRunner {
 		user.setUserName("App User 1");
 		user.setPassword("password");
 		user.setAge(30);
-		user.setPhoneNo("+6031242323");
+		user.setPhoneNo("+603124232");
 		
 		UserAddressDTO addr1 = new UserAddressDTO();
 		addr1.setAddressType("HOME");
