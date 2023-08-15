@@ -17,39 +17,13 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class UserDataLoader implements ApplicationRunner {
 
+	public static final String APPUSER_01 = "APPUSER01";
 	private final UserService userService;
 	
 	@Override
-	public void run(ApplicationArguments args) throws Exception {
-		AppUserDTO user = new AppUserDTO();
-		user.setUserID("APPUSER01");
-		user.setUserName("App User 1");
-		user.setPassword("password");
-		user.setAge(30);
-		user.setPhoneNo("+603124232");
-		
-		UserAddressDTO addr1 = new UserAddressDTO();
-		addr1.setAddressType("HOME");
-		addr1.setFirstLine("162, Avantas Residences");
-		addr1.setSecondLine("Jalan Klang Lama");
-		addr1.setState("Kuala Lumpur");
-		addr1.setCountry("MYS");
-		addr1.setPostcode("58100");
+	public void run(ApplicationArguments args) {
+		AppUserDTO user = getAppUserDTO();
 
-		UserAddressDTO addr2 = new UserAddressDTO();
-		addr2.setAddressType("OFFICE");
-		addr2.setFirstLine("Menara Maybank");
-		addr2.setSecondLine("100, Jalan Tun Perak");
-		addr2.setState("Kuala Lumpur");
-		addr2.setCountry("MYS");
-		addr2.setPostcode("50050");
-		
-		List<UserAddressDTO> addresses = new ArrayList<>();
-		addresses.add(addr1);
-		addresses.add(addr2);
-		
-		user.setAddresses(addresses);
-		
 		userService.createUser(user);
 		
 		AppUserDTO user2 = new AppUserDTO();
@@ -66,11 +40,43 @@ public class UserDataLoader implements ApplicationRunner {
 		addr3.setState("Kuala Lumpur");
 		addr3.setCountry("MYS");
 		addr3.setPostcode("59200");
-		
+
 		List<UserAddressDTO> addresses2 = new ArrayList<>();
 		addresses2.add(addr3);
 		user2.setAddresses(addresses2);
-		
+
 		userService.createUser(user2);
+	}
+
+	private static AppUserDTO getAppUserDTO() {
+		AppUserDTO user = new AppUserDTO();
+		user.setUserID(APPUSER_01);
+		user.setUserName("App User 1");
+		user.setPassword("password");
+		user.setAge(30);
+		user.setPhoneNo("+603124232");
+
+		UserAddressDTO addr1 = new UserAddressDTO();
+		addr1.setAddressType("HOME");
+		addr1.setFirstLine("162, Avantas Residences");
+		addr1.setSecondLine("Jalan Klang Lama");
+		addr1.setState("Kuala Lumpur");
+		addr1.setCountry("MYS");
+		addr1.setPostcode("58100");
+
+		UserAddressDTO addr2 = new UserAddressDTO();
+		addr2.setAddressType("OFFICE");
+		addr2.setFirstLine("Menara Maybank");
+		addr2.setSecondLine("100, Jalan Tun Perak");
+		addr2.setState("Kuala Lumpur");
+		addr2.setCountry("MYS");
+		addr2.setPostcode("50050");
+
+		List<UserAddressDTO> addresses = new ArrayList<>();
+		addresses.add(addr1);
+		addresses.add(addr2);
+
+		user.setAddresses(addresses);
+		return user;
 	}
 }
