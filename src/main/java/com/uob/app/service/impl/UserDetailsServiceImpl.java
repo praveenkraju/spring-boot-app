@@ -28,4 +28,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		}
 		return new User(username, user.getPassword(), new ArrayList<>());
 	}
+
+
 }
